@@ -1,0 +1,35 @@
+<div class="btn-group">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    Change Restaurant Area     <span class="caret"></span>
+  </button>
+    <ul class="dropdown-menu" role="menu">
+      <li><%= link_to "Lintas", lintas_path, class: "btn btn-link" %></li>
+      <li><%= link_to "Damai", damai_path, class: "btn btn-link" %></li>
+    </ul>
+</div>
+      
+
+<div class="center">
+  <div>
+    <h1>Pick Your Restaurant</h1>
+    <h4>First Delivery Free. No Minimum Order Size.</h4>
+  </div>
+  <div class="delivery-time">
+    <p>Delivery Hours: 11:00AM - 5:00PM</p>
+  </div>
+
+<div class="center">
+  <div class="row">
+    <% @merchants.each do |merchant| %>
+      <div class="col-md-3">
+        <div class="thumbnail">
+          <%= link_to image_tag(merchant.logo.url), lintas_path %>
+            <div class="caption">
+              <h3><%= merchant.restaurant_name %></h3>
+              <p><%= merchant.area %></p>
+            </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

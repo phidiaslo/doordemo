@@ -1,0 +1,135 @@
+@import "bootstrap";
+
+body {
+	background-color: #e6e6e6;
+	color: #333333;
+	font-family: Arial, Helvetica, Sans-serif;
+}
+
+.navbar {
+	margin-bottom: 0px;
+}
+.navbar-default {
+	background-color: #E45C1E;
+	border-color: #E45c1E;
+	border-radius: 0px;
+	margin-bottom: 20px;
+}
+
+.navbar-default .navbar-brand {
+	font-family: guardian-eqyptt, georgia, serif;
+	font-weight: 400;
+	color: #FFFFFF;
+	font-size: 30px;
+}
+
+.navbar-default .navbar-nav > li > a{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+
+.center {
+	text-align: center;
+}
+
+h2 {
+	margin-top: 30px;
+}
+.col-md-3:nth-child(4n+1) {
+	clear: left;
+}
+
+.col-md-6 {
+	h3 {font-size: 45px;}
+	h5 {font-size: 25px;}
+	p {font-size: 18px;}
+}
+
+.caption {
+	h3 {
+	font-size: 17px;
+	margin: 2px;
+	}
+	p {
+	font-size: 15px;
+	margin: 0px;
+	}
+}
+
+.container {
+	max-width: 970px;
+}
+
+.container .jumbotron {
+	background-image: url('https://dl.dropboxusercontent.com/s/xkdr8nxtg8rj5ac/jumbotron.jpg');
+	padding-top: 30px;
+	padding-bottom: 30px;
+	margin-bottom: 0px;
+	border-radius: 6px;
+	h1, p {
+        font-family: guardian-egyptt, georgia, serif;
+		color: #ffffff;
+		}
+}
+
+.footer {
+	background-color: #e6e6e6;
+}
+
+.pull-left {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.pull-right {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+background-color: #ffffff;
+}
+
+.red {
+	color: #E74C3C;
+}
+
+.home-button {
+	font-size: 18px;
+}
+
+hr {
+	border-color: #E74C3C;
+	width: 152px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+
+}
+
+.alert {
+	border-radius: 6px;
+}
+
+.delivery-time {
+    background-color: #5bc0de;
+	border: 1px solid #46b8da;
+	border-radius: 5px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	p {
+		font-size: 24px;
+		margin-top: 12px;
+		color: #ffffff;
+	}
+}
+
+.thumbnail {
+	padding: 0px;
+	border: 1px solid #cecece;
+}
+
+.content-container {
+	background-color: #ffffff;
+}
