@@ -1,5 +1,24 @@
 <a href="/">« Back to all restaurants</a>
 <h2><%= @merchant.restaurant_name %></h2>
+
+<div>
+  <div class="span8">
+    <p><strong>Delivery Hours:</strong> 11:00AM - 5:00PM</p>
+  </div>
+  <div class="span4">
+    <div class="restaurant-menu-button-container">
+      <button id="order-cart-button" class="btn restaurant-menu-button">
+        <span id="order-cart-button-text">Order Cart</span>
+        <span id="order-cart-item-count" class="badge badge-important">1</span>
+      </button>
+      <button class="btn btn-success restaurant-menu-button checkout-button">
+        Checkout
+      </button>
+      
+    </div>
+  </div>
+</div>
+
 <div class="center">
   <div class="row">
     <% @listings.each do |listing| %>
@@ -15,7 +34,7 @@
                 <%= link_to 'Edit', edit_listing_path(listing), class: "btn btn-link" %>
                 <%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link" %>
               <% else %>
-              <br>
+              
                 <%= link_to 'Add to Order', listing, class: "btn btn-default" %>
               <% end %>
             
@@ -24,4 +43,7 @@
       </div>
     <% end %>
   </div>
+  <br>
+  <p>If you spot any incorrect item descriptions, please let us know</p>
+  <br>
 </div>

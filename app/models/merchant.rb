@@ -1,14 +1,10 @@
 class Merchant < ActiveRecord::Base
- if Rails.env.development?
+  # This method associates the attribute ":avatar" with a file attachment
   has_attached_file :logo, :styles => { :medium => "200x", :thumb => "100x100>" }, :default_url => "default.png"
-  validates_attachment_content_type :image, :content_type => %w(image/jpeg image/jpg image/png)
-  else
-   has_attached_file :logo, :styles => { :medium => "200x", :thumb => "100x100>" }, :default_url => "default.png",
-   :storage => :dropbox,
+  :storage => :dropbox,
      :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
      :path => ":style/:id_:filename"
-     validates_attachment_content_type :logo, :content_type => %w(image/jpeg image/jpg image/png)
-  end
+  validates_attachment_content_type :logo, :content_type => %w(image/jpeg image/jpg image/png)
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
