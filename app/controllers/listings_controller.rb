@@ -3,8 +3,6 @@ class ListingsController < ApplicationController
   before_filter :authenticate_merchant!, only: [:seller, :new, :create, :edit, :update, :destroy]
   before_filter :check_merchant, only: [:edit, :update, :destroy]
 
-
-
   def seller
     @listings = Listing.where(merchant: current_merchant).order("created_at DESC")
   end

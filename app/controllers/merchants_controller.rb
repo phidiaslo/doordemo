@@ -11,5 +11,9 @@ class MerchantsController < ApplicationController
   def damai
     @merchants = Merchant.where(:area => "Damai")
   end
-  
+
+  def show
+    @merchant = Merchant.find(params[:id])
+    @listings = Listing.where(:merchant_id => params[:id])
+  end
 end

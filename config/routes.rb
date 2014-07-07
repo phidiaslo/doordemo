@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   devise_for :merchants
-  resources :merchants, only: [:index]
+  resources :merchants, only: [:show]
   resources :listings
 
   get 'pages/about'
@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get 'lintas' => "merchants#lintas"
   get 'damai' => "merchants#damai"
   get 'merchants' => "merchants#index"
+  get 'merchants/:id' => 'merchants#show'
+
 
   root 'pages#home'
 
