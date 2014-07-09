@@ -9,7 +9,6 @@ class Merchant < ActiveRecord::Base
      :path => ":style/:id_:filename"
      validates_attachment_content_type :logo, :content_type => %w(image/jpeg image/jpg image/png)
   end
-
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

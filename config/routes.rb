@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :applicants
+
   devise_for :users
   devise_for :merchants
   resources :merchants, only: [:show]
