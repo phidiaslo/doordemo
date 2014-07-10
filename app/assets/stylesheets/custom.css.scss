@@ -158,6 +158,22 @@ div.cart div.title {
 	border-bottom: 1px dotted #bbb;
 }
 
+div.cart div.cart-total {
+	font-size: 20px;
+	font-weight: bold;
+	margin-top: 5px;
+	padding-top: 5px;
+	border-top: 1px dotted #bbb;
+}
+
+div.cart div.cart-total div.number {
+	float: right;
+}
+
+div.cart div.cart-row div.item-price {
+float: right;
+}
+
 .restaurant-info {
 	margin-bottom: 30px;
 	border-bottom: 2px solid #333333;

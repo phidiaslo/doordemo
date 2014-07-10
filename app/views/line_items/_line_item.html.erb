@@ -1,0 +1,6 @@
+<div class="cart-row">
+   <div class="item-price">
+      <%= number_to_currency(line_item.total_price, :locale => :my) %>
+   </div>
+      <%= line_item.listing.name %> &times; <%= line_item.quantity %>
+</div>

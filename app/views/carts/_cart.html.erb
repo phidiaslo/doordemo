@@ -1,0 +1,12 @@
+<div class="cart_title">Your Cart</div>
+
+	<%= render(cart.line_items) %>
+
+<div class="cart-total">
+   <div class="number" id="cart-total">
+      <%= number_to_currency(cart.total_price, :locale => :my) %>
+   </div>
+   Total
+</div>
+
+<%= button_to 'Empty cart', cart, data: {confirm: 'Are you sure?'}, method: :delete %>
