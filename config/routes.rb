@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :locations
+
   resources :line_items
 
   resources :carts
@@ -17,6 +19,7 @@ Rails.application.routes.draw do
   get 'pages/privacy'
   get 'pages/home'
   get 'seller' => "listings#seller"
+  get 'address' => "locations#address"
   get 'lintas' => "merchants#lintas"
   get 'damai' => "merchants#damai"
   get 'merchants' => "merchants#index"

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  location_name: MyString
+  location_area: MyString
+  location_address: MyText
+
+two:
+  location_name: MyString
+  location_area: MyString
+  location_address: MyText
