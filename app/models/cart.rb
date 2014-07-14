@@ -13,9 +13,20 @@ class Cart < ActiveRecord::Base
 		line_items.to_a.sum { |item| item.total_price }
 	end
 
-	#def total_price_with_delivery
-	#	total_price + 6
+	def delivery_fee
+		6
+	end
+
+	# def delivery_fee
+	#	if @order.delivery_area = @merchant.area 
+	#	6
+	#	else
+	#	10
 	#end
+
+	def total_order
+		total_price + delivery_fee
+	end
 
 
 	has_many :line_items, dependent: :destroy

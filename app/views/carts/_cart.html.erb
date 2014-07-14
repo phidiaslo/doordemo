@@ -1,12 +1,29 @@
-
+<div class="sub-title" style="margin-bottom: 15px">
+         Order Form 
+      </div>
 
 	<%= render(cart.line_items) %>
 
+<br>
+<div class="cart-row">
+   <div class="item-price">
+      <%= number_to_currency(cart.total_price, :locale => :my) %>
+   </div>
+      Food/Beverage total
+</div>
+<div class="cart-row">
+   <div class="item-price">
+      <%= number_to_currency(cart.delivery_fee, :locale => :my) %>
+   </div>
+      Delivery Fee
+</div>
+
+
 <div class="cart-total">
    <div class="number" id="cart-total">
-      <%= number_to_currency(cart.total_price, :locale => :my) %>
+      <%= number_to_currency(cart.total_order, :locale => :my) %>
    </div>
    Total
 </div>
 
-<%= button_to 'Empty cart', cart, data: {confirm: 'Are you sure?'}, method: :delete %>
+<center><%= button_to 'Empty Cart', cart, data: {confirm: 'Are you sure?'}, method: :delete %></center>
