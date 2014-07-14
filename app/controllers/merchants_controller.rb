@@ -15,6 +15,6 @@ class MerchantsController < ApplicationController
   def show
     @merchant = Merchant.find(params[:id])
     @listings = Listing.where(:merchant_id => params[:id])
-    @cart = current_cart
+    @cart = current_cart.destroy
   end
 end

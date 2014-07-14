@@ -31,6 +31,8 @@ GEM
     bcrypt (3.1.7-x86-mingw32)
     bootstrap-sass (3.2.0.0)
       sass (~> 3.2)
+    bootstrap3-datetimepicker-rails (3.0.0.2)
+      momentjs-rails (~> 2.5.0)
     builder (3.2.2)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -70,6 +72,8 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.25.1)
     minitest (5.3.5)
+    momentjs-rails (2.5.1)
+      railties (>= 3.1)
     multi_json (1.10.1)
     orm_adapter (0.5.0)
     paperclip (4.1.1)
@@ -150,11 +154,13 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass (~> 3.2.0)
+  bootstrap3-datetimepicker-rails (~> 3.0.0.2)
   coffee-rails (~> 4.0.0)
   devise
   figaro
   jbuilder (~> 2.0)
   jquery-rails
+  momentjs-rails (>= 2.5.0)
   paperclip (~> 4.1)
   paperclip-dropbox (>= 1.1.7)
   pg

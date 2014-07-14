@@ -13,6 +13,8 @@ gem "paperclip", "~> 4.1"
 gem "paperclip-dropbox", ">= 1.1.7"
 gem "figaro"
 gem 'devise'
+gem 'momentjs-rails', '>= 2.5.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 3.0.0.2'
 
 
 group :production do

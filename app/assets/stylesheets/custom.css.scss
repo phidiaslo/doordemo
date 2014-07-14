@@ -141,7 +141,7 @@ hr {
 div.cart {
 	background: #fff9d9;
 	padding: 12px;
-	font-size: 14px;
+	font-size: 15px;
 	border-radius: 8px;
 	-moz-border-radius: 8px;
 	-webkit-border-radius: 8px;
@@ -155,7 +155,7 @@ div.cart div.title {
 	font-weight: bold;
 	font-size: 16px;
 	padding-bottom: 5px;
-	border-bottom: 1px dotted #bbb;
+	
 }
 
 div.cart div.cart-total {
@@ -172,6 +172,50 @@ div.cart div.cart-total div.number {
 
 div.cart div.cart-row div.item-price {
 float: right;
+}
+
+div.cart div.sub-title {
+margin-top: 15px;
+font-weight: bold;
+}
+
+.date-time {
+	border: 1px solid #e4cd92;
+	padding: 15px;
+	margin-bottom: 20px;
+	background: #FFFEEA;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+}
+
+.message {
+	font-size: 17px;
+	font-weight: bold;
+	color: #c30;
+	padding-bottom: 5px;
+	margin-bottom: 15px;
+	border-bottom: 1px dotted #999;
+}
+
+.sub-message {
+	color: #333;
+	font-size: 13px;
+}
+
+.control-group {
+p {
+	font-size: 12px;
+	text-align: center;
+	margin-bottom: 0px;
+	color: #777777;
+}
+}
+
+.col-sm-6 {
+width: 100%;
+padding-left: 0px;
+padding-right: 0px;
 }
 
 .restaurant-info {

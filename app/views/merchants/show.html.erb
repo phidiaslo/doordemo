@@ -30,9 +30,63 @@
   </div>
     <div class="col-md-4 cart">
       <div class="title">
-        <%= @merchant.restaurant_name %>
+        <center><%= @merchant.restaurant_name %></center>
       </div>
-      <div id="cart">
+      
+      <div class="date-time">
+        <div class="message center">
+          When do you want to eat?
+          <div class="sub-message">
+              Delivery is <span style="color: #000"><u>15 minutes</u> before eat time</span>
+            </div>
+        </div>
+
+        <div class="control-group ">
+               <div class='col-sm-6'>
+                  <div class="form-group">
+                      <div class='input-group date' id='datetimepicker5' data-date-format="DD/MM/YYYY">
+                          <input type='text' class="form-control" />
+                          <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
+                          </span>
+                      </div>
+                  </div>
+              </div>
+
+            <div class='col-sm-6'>
+                <div class="form-group">
+                    <div class='input-group date' id='datetimepicker4'>
+                        <input type='text' class="form-control" />
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+          
+
+      <p>Please allow 45 minutes for ASAP orders<p>
+            
+              <script type="text/javascript">
+                  $(function () {
+                      $('#datetimepicker4').datetimepicker({
+                          pickDate: false
+                      });
+                  });
+              </script>
+
+              <script type="text/javascript">
+                  $(function () {
+                      $('#datetimepicker5').datetimepicker({
+                          pickTime: false
+                      });
+                  });
+              </script>
+            </div>
+            
+
+      </div>
+
+    <div id="cart">
         <%= render @cart %>
       </div>
     </div>
