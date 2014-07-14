@@ -1,6 +1,6 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, only: [:address, :new, :create, :edit, :update, :destroy]
+  before_filter :authenticate_user!, only: [:index,:address, :new, :create, :edit, :update, :destroy]
   before_filter :check_user, only: [:edit, :update, :destroy]
   # GET /locations
   # GET /locations.json

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140714110946) do
+ActiveRecord::Schema.define(version: 20140714174744) do
 
   create_table "applicants", force: true do |t|
     t.string   "name"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20140714110946) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "quantity",   default: 1
+    t.integer  "order_id"
   end
 
   create_table "listings", force: true do |t|
@@ -88,6 +89,15 @@ ActiveRecord::Schema.define(version: 20140714110946) do
 
   add_index "merchants", ["email"], name: "index_merchants_on_email", unique: true
   add_index "merchants", ["reset_password_token"], name: "index_merchants_on_reset_password_token", unique: true
+
+  create_table "orders", force: true do |t|
+    t.text     "address"
+    t.string   "pay_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "merchant_id"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

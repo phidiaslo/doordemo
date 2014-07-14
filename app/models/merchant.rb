@@ -18,4 +18,5 @@ class Merchant < ActiveRecord::Base
             :name, presence: true
 
   has_many :listings, dependent: :destroy
+  has_many :orders, dependent: :destroy
 end

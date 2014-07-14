@@ -14,7 +14,7 @@ class Cart < ActiveRecord::Base
 	end
 
 	def delivery_fee
-		6
+		10
 	end
 
 	# def delivery_fee

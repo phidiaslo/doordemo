@@ -1,6 +1,6 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_merchant!, only: [:seller, :new, :create, :edit, :update, :destroy]
+  before_filter :authenticate_merchant!, only: [:index, :seller, :new, :create, :edit, :update, :destroy]
   before_filter :check_merchant, only: [:edit, :update, :destroy]
 
   def seller
