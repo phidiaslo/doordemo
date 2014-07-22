@@ -1,4 +1,5 @@
 class Cart < ActiveRecord::Base
+	
 	def add_listing(listing_id)
 		current_item = line_items.find_by_listing_id(listing_id)
 		if current_item
@@ -17,17 +18,11 @@ class Cart < ActiveRecord::Base
 		10
 	end
 
-	# def delivery_fee
-	#	if @order.delivery_area = @merchant.area 
-	#	6
-	#	else
-	#	10
-	#end
-
 	def total_order
 		total_price + delivery_fee
 	end
 
-
 	has_many :line_items, dependent: :destroy
+	belongs_to :merchant
+	belongs_to :order
 end

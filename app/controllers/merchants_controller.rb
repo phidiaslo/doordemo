@@ -17,4 +17,5 @@ class MerchantsController < ApplicationController
     @listings = Listing.where(:merchant_id => params[:id])
     @cart = current_cart.destroy
   end
+
 end

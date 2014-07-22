@@ -1,7 +1,8 @@
-<%= form_for(@order) do |f| %>
+<%= form_for([@merchant, @order]) do |f| %> <!--Trial 1-->
   <% if @order.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+    <div id="error_explanation" class="alert alert-danger dismissable">
+     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <h4><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h4>
 
       <ul>
       <% @order.errors.full_messages.each do |message| %>
@@ -11,15 +12,26 @@
     </div>
   <% end %>
 
+  <div class="form-group">
+    <%= f.label :delivery_date %>
+    <%= f.text_field :delivery_date, :placeholder => "DD/MM/YYYY", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :delivery_time %>
+    <%= f.text_field :delivery_time, :placeholder => "HH:MM AM/PM", class: "form-control" %>
+  </div>
+
  <div class="form-group">
-    <%= f.label :delivery_address %><br>
+    <%= f.label :delivery_address %> <span style="color: #CC3300;">(We only deliver to Lintas, Damai & Kota Kinabalu)<span>
     <%= f.text_area :address, rows: 3, class: "form-control" %>
   </div>
+  
   <div class="form-group">
     <%= f.label :payment_type %><br>
     <%= f.select :pay_type, Order::PAYMENT_TYPES, prompt: 'Select a payment method' %>
   </div>
   <div class="form-group">
-    <%= f.submit 'Place Order', class: "btn btn-primary" %>
+    <%= f.submit 'Place Order', class: "btn btn-success" %>
   </div>
 <% end %>

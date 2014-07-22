@@ -25,7 +25,7 @@ class CartsController < ApplicationController
   # POST /carts.json
   def create
     @cart = Cart.new(cart_params)
-
+        
     respond_to do |format|
       if @cart.save
         format.html { redirect_to @cart, notice: 'Cart was successfully created.' }
@@ -69,9 +69,10 @@ class CartsController < ApplicationController
     def set_cart
       begin
       @cart = Cart.find(params[:id])
+
     rescue ActiveRecord::RecordNotFound
       logger.error "Attempt to access invalid cart #{params[:id]}"
-      redirect_to root_path, notice: 'Invalid cart'
+      redirect_to root_url, notice: 'Invalid cart'
     else
       respond_to do |format|
         format.html # show.html.erb

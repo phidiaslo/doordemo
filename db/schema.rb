@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140714174744) do
+ActiveRecord::Schema.define(version: 20140720145045) do
 
   create_table "applicants", force: true do |t|
     t.string   "name"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20140714174744) do
   create_table "carts", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "merchant_id"
   end
 
   create_table "line_items", force: true do |t|
@@ -32,8 +33,9 @@ ActiveRecord::Schema.define(version: 20140714174744) do
     t.integer  "cart_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "quantity",   default: 1
+    t.integer  "quantity",    default: 1
     t.integer  "order_id"
+    t.integer  "merchant_id"
   end
 
   create_table "listings", force: true do |t|
@@ -91,12 +93,17 @@ ActiveRecord::Schema.define(version: 20140714174744) do
   add_index "merchants", ["reset_password_token"], name: "index_merchants_on_reset_password_token", unique: true
 
   create_table "orders", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "delivery_date"
+    t.string   "delivery_time"
     t.text     "address"
     t.string   "pay_type"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "merchant_id"
+    t.integer  "cart_id"
   end
 
   create_table "users", force: true do |t|

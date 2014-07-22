@@ -3,7 +3,8 @@ class LineItem < ActiveRecord::Base
 		listing.price * quantity
 	end
 
-    belongs_to :order
+	belongs_to :order
 	belongs_to :listing
 	belongs_to :cart
+	belongs_to :merchant
 end

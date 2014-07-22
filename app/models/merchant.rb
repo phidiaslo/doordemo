@@ -19,4 +19,6 @@ class Merchant < ActiveRecord::Base
 
   has_many :listings, dependent: :destroy
   has_many :orders, dependent: :destroy
+  has_many :carts, dependent: :destroy
+  has_many :line_items, dependent: :destroy
 end

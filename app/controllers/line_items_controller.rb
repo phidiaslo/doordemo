@@ -27,6 +27,8 @@ class LineItemsController < ApplicationController
     @cart = current_cart
     listing = Listing.find(params[:listing_id])
     @line_item = @cart.add_listing(listing.id)
+    @line_item.merchant_id = listing.merchant_id
+    @merchant = @line_item.merchant
 
     respond_to do |format|
       if @line_item.save

@@ -1,3 +1,2 @@
 $('#notice').hide();
-
-$('#cart').html("<%=j render @cart %>");
+$('#cart').html('<%=j render partial: "carts/cart", object: @cart, locals: { merchant: @merchant } %>');

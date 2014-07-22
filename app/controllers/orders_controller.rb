@@ -1,6 +1,15 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user! #Trial 1
   
+  def sales
+    @orders = Order.all.where(merchant: current_merchant).order("created_at DESC")
+  end
+
+  def purchases
+    @orders = Order.all.where(user: current_user).order("created_at DESC")
+  end
+
   # GET /orders
   # GET /orders.json
   def index
@@ -21,6 +30,7 @@ class OrdersController < ApplicationController
     end
  
     @order = Order.new
+    @merchant = Merchant.find(params[:merchant_id]) #Trial 1
   end
 
   # GET /orders/1/edit
@@ -33,6 +43,11 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.add_line_items_from_cart(current_cart)
     @order.user_id = current_user.id
+    @merchant = Merchant.find(params[:merchant_id]) #Trial 1
+    @order.merchant_id = @merchant.id #Success!
+    @order.cart_id = current_cart.id
+    @order.first_name = current_user.first_name
+    @order.last_name = current_user.last_name
 
     respond_to do |format|
       if @order.save
@@ -76,12 +91,12 @@ class OrdersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
-      @order = Order.find(params[:id])
+      @order = Order.find(params[:id]) #trial
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:address, :pay_type)
+      params.require(:order).permit(:delivery_date, :delivery_time, :address, :pay_type)
     end
 
     def check_user
@@ -89,4 +104,5 @@ class OrdersController < ApplicationController
         redirect_to root_url, alert: "Sorry, this location belongs to someone else"
       end
     end
+
 end

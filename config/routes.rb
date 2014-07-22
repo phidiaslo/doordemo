@@ -1,17 +1,25 @@
 Rails.application.routes.draw do
-  resources :orders
+  #Trial 1
+  #resources :orders
 
   resources :locations
 
   resources :line_items
 
-  resources :carts
+  resources :carts   #Trial 2
 
   resources :applicants
 
   devise_for :users
   devise_for :merchants
-  resources :merchants, only: [:show]
+  
+  #Trial 1
+  #resources :merchants, only: [:show]
+  
+  resources :merchants do #Trial 1
+    resources :orders   #Trial 1
+  end                     #Trial 1
+
   resources :listings
 
   get 'pages/about'
@@ -25,8 +33,9 @@ Rails.application.routes.draw do
   get 'lintas' => "merchants#lintas"
   get 'damai' => "merchants#damai"
   get 'merchants' => "merchants#index"
-  get 'merchants/:id' => 'merchants#show'
-
+  get 'merchants/:id' => "merchants#show"
+  get 'sales' => "orders#sales"
+  get 'purchases' => "orders#purchases"
 
   root 'pages#home'
 
