@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140720145045) do
+ActiveRecord::Schema.define(version: 20140723054011) do
 
   create_table "applicants", force: true do |t|
     t.string   "name"
@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(version: 20140720145045) do
     t.integer  "user_id"
     t.integer  "merchant_id"
     t.integer  "cart_id"
+    t.string   "restaurant_name"
   end
 
   create_table "users", force: true do |t|
