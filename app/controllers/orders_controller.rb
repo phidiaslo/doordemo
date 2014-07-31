@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user! #Trial 1
-  
+  before_action :authenticate_user! #Potential Problems
+
   def sales
     @orders = Order.all.where(merchant: current_merchant).order("created_at DESC")
   end
@@ -13,12 +13,13 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    @orders = Order.all.order("created_at DESC")
   end
 
   # GET /orders/1
   # GET /orders/1.json
   def show
+    @line_items = LineItem.where(:order_id => params[:id])
   end
 
   # GET /orders/new

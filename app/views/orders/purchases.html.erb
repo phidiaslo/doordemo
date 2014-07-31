@@ -4,8 +4,7 @@
     <th>Delivery Address</th>
     <th>Delivery Date</th>
     <th>Delivery Time</th>
-    <th>View Order</th>
-       
+           
   </tr>
 
   <% @orders.each do |order| %>
@@ -14,6 +13,7 @@
       <td><%= order.address %></td>
       <td><%= order.delivery_date %></td>
       <td><%= order.delivery_time %></td>
+      <td><%= link_to "View Puchase", order, class: "btn btn-default" %></td>
       
     </tr>
   <% end %>

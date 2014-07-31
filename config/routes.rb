@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   #Trial 1
-  #resources :orders
+  resources :orders
 
   resources :locations
 

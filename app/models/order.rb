@@ -12,6 +12,7 @@ class Order < ActiveRecord::Base
     validates :pay_type, inclusion: PAYMENT_TYPES
 
     has_many :line_items, dependent: :destroy
+    has_many :carts #deleted dependent: :destroy
     belongs_to :user
     belongs_to :merchant
 end
