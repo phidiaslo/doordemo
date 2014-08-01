@@ -1,19 +1,28 @@
+<h1>Purchase History</h1>
+
 <table class="table table-striped table-bordered">
   <tr>
-    <th>Ordered</th>
+    <th>Order No.</th>
+    <th>Date</th>
     <th>Delivery Address</th>
     <th>Delivery Date</th>
     <th>Delivery Time</th>
+    <th>Restaurant Name</th>
+    <th>Total (RM)</th>
+    <th></th>
            
   </tr>
 
   <% @orders.each do |order| %>
     <tr>
+      <td>BC10<%= order.id %></td>
       <td><%= order.created_at.strftime("%B %-d, %Y") %></td>
       <td><%= order.address %></td>
       <td><%= order.delivery_date %></td>
       <td><%= order.delivery_time %></td>
-      <td><%= link_to "View Puchase", order, class: "btn btn-default" %></td>
+      <td><%= order.merchant.restaurant_name %></td>
+      <td></td>
+      <td><%= link_to "View Purchase", order, class: "btn btn-default" %></td>
       
     </tr>
   <% end %>

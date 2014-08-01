@@ -1,13 +1,21 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user! #Potential Problems
-
+  #before_action :authenticate_user!
+   
   def sales
-    @orders = Order.all.where(merchant: current_merchant).order("created_at DESC")
+    if merchant_signed_in?
+      @orders = Order.all.where(merchant: current_merchant).order("created_at DESC")
+    else
+      redirect_to new_merchant_session_path, alert: "The page that you're trying to access is for merchants only."
+    end
   end
 
   def purchases
-    @orders = Order.all.where(user: current_user).order("created_at DESC")
+    if user_signed_in?
+      @orders = Order.all.where(user: current_user).order("created_at DESC")
+    else
+      redirect_to new_user_session_path, alert: "The page that you're trying to access is for members only."
+    end
   end
 
   # GET /orders
@@ -47,8 +55,7 @@ class OrdersController < ApplicationController
     @merchant = Merchant.find(params[:merchant_id]) #Trial 1
     @order.merchant_id = @merchant.id #Success!
     @order.cart_id = current_cart.id
-    @order.first_name = current_user.first_name
-    @order.last_name = current_user.last_name
+       
 
     respond_to do |format|
       if @order.save
