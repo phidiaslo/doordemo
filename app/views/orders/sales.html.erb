@@ -16,11 +16,11 @@
     <tr>
       <td>BC10<%= order.id %></td>
       <td><%= order.created_at.strftime("%B %-d, %Y") %></td>
-      <td><%= order.first_name %> <%= order.last_name %></td>
+      <td><%= order.user.first_name %> <%= order.user.last_name %></td>
       <td><%= order.address %></td>      
       <td><%= order.delivery_date %></td>
       <td><%= order.delivery_time %></td>
-      <td></td>
+      <td><%= order.total_price %></td>
       <td><%= link_to "View Order", order, class: "btn btn-default" %></td>
     </tr>
   <% end %>

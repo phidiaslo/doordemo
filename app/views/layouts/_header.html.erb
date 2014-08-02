@@ -22,8 +22,14 @@
                       <li><%= link_to "Damai", damai_path %></li>
                     </ul>
                 </li>
-       
-        <% if merchant_signed_in? %>
+
+        <% if admin_signed_in? %>
+                <li><%= link_to "Received Orders", orders_path %></li>
+                <li><%= link_to "Create Merchant", new_merchant_registration_path %></li>
+                <li><%= link_to "Edit Account", edit_admin_registration_path %></li>
+                <li><%= link_to "Log Out", destroy_admin_session_path, method: :delete %></li>
+
+        <% elsif merchant_signed_in? %>
                 <li><%= link_to "Order List", sales_path %></li>
                 <li><%= link_to "Manage Menu", seller_path %></li>
                 <li><%= link_to "Edit Account", edit_merchant_registration_path %></li>
@@ -31,7 +37,7 @@
         <% elsif user_signed_in? %>
                 <li><%= link_to "Purchases", purchases_path %></li>
                 <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
-                <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+                <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>       
         <% else %>
             <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign Up <span class="caret"></span></a>

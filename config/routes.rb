@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :admins
   #Trial 1
   resources :orders
 

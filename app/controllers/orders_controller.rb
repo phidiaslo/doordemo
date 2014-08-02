@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-  #before_action :authenticate_user!
+  before_action :authenticate_admin!, only: [:index, :edit, :update, :destroy]
   before_filter :check_user, only: [:show]
 
 
@@ -56,7 +56,9 @@ class OrdersController < ApplicationController
     @order.user_id = current_user.id
     @merchant = Merchant.find(params[:merchant_id]) #Trial 1
     @order.merchant_id = @merchant.id #Success!
-    @order.cart_id = current_cart.id
+    @order.cart_id = current_cart.id #Probably not needed
+    @order.total_price = current_cart.total_price
+    @order.total_order = current_cart.total_order
        
 
     respond_to do |format|

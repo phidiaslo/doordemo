@@ -80,8 +80,11 @@ class ListingsController < ApplicationController
     end
 
     def check_merchant
-      if current_merchant != @listing.merchant
-        redirect_to root_url, alert: "Sorry, this listing belongs to someone else"
-      end
+
+        if current_merchant != @listing.merchant
+          redirect_to root_url, alert: "Sorry, this listing belongs to someone else"
+        end
+     
     end
 end
+
