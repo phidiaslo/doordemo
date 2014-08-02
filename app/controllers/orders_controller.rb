@@ -1,7 +1,9 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   #before_action :authenticate_user!
-   
+  before_filter :check_user, only: [:show]
+
+
   def sales
     if merchant_signed_in?
       @orders = Order.all.where(merchant: current_merchant).order("created_at DESC")
@@ -108,9 +110,17 @@ class OrdersController < ApplicationController
     end
 
     def check_user
-      if current_user != @order.user
-        redirect_to root_url, alert: "Sorry, this location belongs to someone else"
+
+      if user_signed_in?
+        if current_user != @order.user
+          redirect_to root_url, alert: "Sorry, this page belongs to someone else"
+        end
+      else merchant_signed_in?
+        if current_merchant != @order.merchant
+          redirect_to root_url, alert: "Sorry, this page belongs to someone else"
+        end
       end
+
     end
 
 end

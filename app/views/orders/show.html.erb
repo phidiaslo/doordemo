@@ -15,8 +15,9 @@
     <th>Image</th>
     <th>Ordered Item</th>
     <th>Description</th>
+    <th>Price (RM)</th>
     <th>Quantity</th>
-    <th>Price (RM)</th>   
+    <th>Total (RM)</th>   
   </tr>
 
   <% @line_items.each do |line_item| %>
@@ -24,11 +25,13 @@
       <td><%= image_tag line_item.listing.image.url(:medium) %></td>
       <td><%= line_item.listing.name %></td>
       <td><%= line_item.listing.description %></td>
+      <td><%= line_item.listing.price %></td>
       <td><%= line_item.quantity %></td>
       <td><%= line_item.total_price %></td>
                
     </tr>
   <% end %>
 </table>
+
 
  

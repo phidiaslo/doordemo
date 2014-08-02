@@ -20,7 +20,7 @@
                     <%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link" %>
                   <% elsif user_signed_in? %>
                     <%= button_to 'Add to Cart', line_items_path(listing_id: listing), remote: true, class: "btn btn-default" %>
-                                     
+                                   
                   <% end %>
                 
                 </div>
