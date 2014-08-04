@@ -1,6 +1,8 @@
+<% if admin_signed_in? %>
+  <%= link_to '« Back to Received Orders', orders_path %>
+<% else %>
+<% end %>
+
 <h1>Editing order</h1>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @order %> |
-<%= link_to 'Back', orders_path %>

@@ -1,7 +1,8 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_merchant!, only: [:index, :seller, :new, :create, :edit, :update, :destroy]
-  before_filter :check_merchant, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_admin!, only: [:index]
+  before_filter :authenticate_merchant!, only: [:seller]
+  before_filter :check_identity, only: [:show, :edit, :update]
 
   def seller
     @listings = Listing.where(merchant: current_merchant).order("created_at DESC")
@@ -63,7 +64,7 @@ class ListingsController < ApplicationController
   def destroy
     @listing.destroy
     respond_to do |format|
-      format.html { redirect_to listings_url, notice: 'Listing was successfully destroyed.' }
+      format.html { redirect_to root_url, notice: 'Listing was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -79,12 +80,18 @@ class ListingsController < ApplicationController
       params.require(:listing).permit(:name, :description, :price, :image)
     end
 
-    def check_merchant
+    def check_identity
 
+      if merchant_signed_in?
         if current_merchant != @listing.merchant
           redirect_to root_url, alert: "Sorry, this listing belongs to someone else"
         end
-     
+
+      elsif admin_signed_in?
+      else
+        redirect_to root_url, alert: "Sorry, you can't access this page"
+      end
+    
     end
 end
 

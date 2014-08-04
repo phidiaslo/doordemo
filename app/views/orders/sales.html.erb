@@ -1,4 +1,4 @@
-<h1>Order List</h1>
+<h1>Received Orders</h1>
 
 <table class="table table-striped table-bordered">
   <tr>
@@ -8,7 +8,7 @@
     <th>Address</th>
     <th>Delivery Date</th>
     <th>Delivery Time</th>
-    <th>Total (RM)</th>
+    <th>Total</th>
     <th></th> 
   </tr>
 
@@ -20,7 +20,7 @@
       <td><%= order.address %></td>      
       <td><%= order.delivery_date %></td>
       <td><%= order.delivery_time %></td>
-      <td><%= order.total_price %></td>
+      <td><%= number_to_currency(order.total_price, :locale => :my) %></td>
       <td><%= link_to "View Order", order, class: "btn btn-default" %></td>
     </tr>
   <% end %>

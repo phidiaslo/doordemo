@@ -1,23 +1,17 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_admin!, only: [:index, :edit, :update, :destroy]
-  before_filter :check_user, only: [:show]
+  before_filter :check_identity, only: [:show]
+  before_filter :authenticate_merchant!, only: [:sales] 
+  before_filter :authenticate_user!, only: [:purchases] 
 
 
   def sales
-    if merchant_signed_in?
       @orders = Order.all.where(merchant: current_merchant).order("created_at DESC")
-    else
-      redirect_to new_merchant_session_path, alert: "The page that you're trying to access is for merchants only."
-    end
   end
 
   def purchases
-    if user_signed_in?
       @orders = Order.all.where(user: current_user).order("created_at DESC")
-    else
-      redirect_to new_user_session_path, alert: "The page that you're trying to access is for members only."
-    end
   end
 
   # GET /orders
@@ -66,7 +60,7 @@ class OrdersController < ApplicationController
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
         session[:order_id] = @order.id
-        format.html { redirect_to root_path, notice: 'Thank you for your order.' }
+        format.html { redirect_to purchases_path, notice: 'Thank you for your order.' }
         format.json { render :show, status: :created, location: @order }
       else
         @cart = current_cart
@@ -111,18 +105,24 @@ class OrdersController < ApplicationController
       params.require(:order).permit(:delivery_date, :delivery_time, :address, :pay_type)
     end
 
-    def check_user
+    def check_identity
 
       if user_signed_in?
         if current_user != @order.user
           redirect_to root_url, alert: "Sorry, this page belongs to someone else"
         end
-      else merchant_signed_in?
+
+      elsif merchant_signed_in?
         if current_merchant != @order.merchant
           redirect_to root_url, alert: "Sorry, this page belongs to someone else"
         end
-      end
 
+      elsif admin_signed_in?
+        #do nothing
+      else
+        redirect_to root_url, alert: "Sorry, this page belongs to someone else"
+      end
+    
     end
 
 end

@@ -2,6 +2,8 @@
   <%= link_to '« Back to Purchase History', purchases_path %>
 <% elsif merchant_signed_in? %>
   <%= link_to '« Back to Order List', sales_path %>
+<% elsif admin_signed_in? %>
+  <%= link_to '« Back to Received Orders', orders_path %>
 <% else %>
 <% end %>
 
@@ -15,9 +17,9 @@
     <th>Image</th>
     <th>Ordered Item</th>
     <th>Description</th>
-    <th>Price (RM)</th>
+    <th>Price</th>
     <th>Quantity</th>
-    <th>Total (RM)</th>   
+    <th>Total</th>   
   </tr>
 
   <% @line_items.each do |line_item| %>
@@ -25,13 +27,15 @@
       <td><%= image_tag line_item.listing.image.url(:medium) %></td>
       <td><%= line_item.listing.name %></td>
       <td><%= line_item.listing.description %></td>
-      <td><%= line_item.listing.price %></td>
+      <td><%= number_to_currency(line_item.listing.price, :locale => :my) %></td>
       <td><%= line_item.quantity %></td>
-      <td><%= line_item.total_price %></td>
+      <td><%= number_to_currency(line_item.total_price, :locale => :my) %></td>
                
     </tr>
   <% end %>
 </table>
+
+<h3>Total: <%= number_to_currency(@order.total_price, :locale => :my) %></h3>
 
 
  
